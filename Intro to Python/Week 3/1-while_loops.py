@@ -1,4 +1,4 @@
-# Translate the following for loops to equivalent while loops:
+"""Translate the following for loops to equivalent while loops:"""
 #                a.   for count in range (100): 
 #                                       print (count)
 count = 0
