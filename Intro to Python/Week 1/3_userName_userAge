@@ -1,0 +1,10 @@
+def show_name_age(user_name, user_age):
+    print(f'The user\'s name is {user_name}, the user\'s age is {user_age}')
+
+def main():
+    user_name = str(input("What is your name? "))
+    user_age = int(input("What is your age? "))
+    show_name_age(user_name, user_age)
+
+if __name__ == "__main__":
+    main()
