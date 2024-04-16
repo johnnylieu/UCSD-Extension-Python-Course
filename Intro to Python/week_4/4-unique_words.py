@@ -9,10 +9,10 @@ def unique_words():
             words = file_contents.split()
             num_of_words = len(words)
 
-            return num_of_words
+            return f"{num_of_words} words."
 
     except FileNotFoundError:
         print(f"Error: No file found.")
 
 if __name__ == "__main__":
-    print(f"{unique_words()} words.")
+    print(unique_words())
