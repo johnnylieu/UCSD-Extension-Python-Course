@@ -50,17 +50,18 @@ class ChatSessions:
         return self.TimesList
 
     def GetMembersList(self):
-        regex = r'T-\d+\s(\w+)\s\*'
+        regex = r'^T-?\d+\s\d+\s(\w+)\s\*'
         """
         this matches the series number "T-1", 
-        followed by a space, 
+        followed by more than one digit then a space, 
         then captures the name using the parentheses \w+, 
         and finally matches a space followed by an asterisk symbol. 
         """
         with open(self.file, 'r') as file:
             for line in file:
-                if re.match(regex, line):
-                    self.MembersList.append(line)
+                matches = re.findall(regex, line)
+                if matches:
+                    self.MembersList.extend(matches)
 
         return self.MembersList
 
