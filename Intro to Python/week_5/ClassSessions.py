@@ -67,7 +67,7 @@ class ChatSessions:
 
 
     def GetUserSysList(self):
-        regex = r'T-\d+\s(\w+)\s([*:])\s'
+        regex = r'T-?\d+\s\d+\s\w+\s([*:])\s'
         """
         matches the series number "T-1", 
         followed by a space, captures the name, 
@@ -76,10 +76,11 @@ class ChatSessions:
         """
 
         with open(self.file, 'r') as file:
-            for line in self.file:
-                if re.match(regex, line):
-                    self.UserSysList.append(line)
-        
+            for line in file:
+                matches = re.findall(regex, line)
+                if matches:
+                    self.UserSysList.extend(matches)
+
         return self.UserSysList
 
     
