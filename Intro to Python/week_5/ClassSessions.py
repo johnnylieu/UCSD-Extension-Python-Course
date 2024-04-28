@@ -6,8 +6,8 @@ class ChatSessions:
     MembersList = []
     UserSysList = []
     TimesList = []
-    UniqueMembersList = []
-    UniqueTagsList = []
+    UniqueMembersList = set()
+    UniqueTagsList = set()
     MessageList = []
 
     def __init__(self, file):
@@ -85,13 +85,15 @@ class ChatSessions:
 
     
     def GetUniqueMembersList(self):
-        regex = r'T-\d+\s(\w+)\s\*'
+        regex = r'^T-?\d+\s\d+\s(\w+)\s\*'
 
         with open(self.file, 'r') as file:
             for line in file:
                 matches = re.findall(regex, line)
                 if matches:
-                    self.UniqueMembersList.extend(matches)
+                    self.UniqueMembersList.update(matches)
+        
+        self.UniqueMembersList = list(self.UniqueMembersList)
 
         return self.UniqueMembersList
     
@@ -102,8 +104,7 @@ class ChatSessions:
             for line in file:
                 matches = re.findall(regex, line)
                 if matches:
-                    print(matches)
-                    self.UniqueTagsList.extend(matches)
+                    self.UniqueTagsList.update(matches)
 
         return self.UniqueTagsList
     
