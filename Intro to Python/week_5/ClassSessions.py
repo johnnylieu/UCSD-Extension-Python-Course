@@ -88,20 +88,23 @@ class ChatSessions:
         regex = r'T-\d+\s(\w+)\s\*'
 
         with open(self.file, 'r') as file:
-            for line in self.file:
-                if re.match(regex, line) and line == re.match.group(1):
-                    self.UniqueMembersList.append(line)
+            for line in file:
+                matches = re.findall(regex, line)
+                if matches:
+                    self.UniqueMembersList.extend(matches)
 
         return self.UniqueMembersList
     
     def GetUniqueTagsList(self):
-        regex = r'^T-?\d*$'
+        regex = r'(T-?\d*)\s'
 
         with open(self.file, 'r') as file:
-            for line in self.file:
-                if re.match(regex, line) and line == re.match.group(1):
-                    self.UniqueTagsList.append(line)
-        
+            for line in file:
+                matches = re.findall(regex, line)
+                if matches:
+                    print(matches)
+                    self.UniqueTagsList.extend(matches)
+
         return self.UniqueTagsList
     
     def GetMessageList(self):
