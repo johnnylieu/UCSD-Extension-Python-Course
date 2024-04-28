@@ -106,19 +106,17 @@ class ChatSessions:
                 if matches:
                     self.UniqueTagsList.update(matches)
 
+        self.UniqueTagsList = list(self.UniqueTagsList)
+
         return self.UniqueTagsList
     
     def GetMessageList(self):
-        regex = r'T-\d+\s\w+\s\* (.*)'
-        """
-        T-\d+: This part matches "T-" followed by one or more digits.
-        \s: This matches a whitespace character.
-        \w+: This matches one or more word characters (letters, digits, or underscores) representing the name.
-        \s\*: This matches a space followed by an asterisk symbol *.
-        (.*): This part captures any characters (except newline characters) after the asterisk symbol *
-        """
+        regex = r'T-?\d+\s\d+\s\w+\s[*:]\s(.+)'
 
         with open(self.file, 'r') as file:
-            for line in self.file:
-                if re.match(regex, line):
-                    self.MessageList(line)
+            for line in file:
+                matches = re.findall(regex, line)
+                if matches:
+                    self.MessageList.extend(matches)
+
+        return self.MessageList
