@@ -3,8 +3,8 @@ Given:
 
 s1 = "America"
 s2 = "Japan"
-Expected Output:
 
+Expected Output:
 AJrpan"""
 
 def first_middle_last_char(s1, s2):
