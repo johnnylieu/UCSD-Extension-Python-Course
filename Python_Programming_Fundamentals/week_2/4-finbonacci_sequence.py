@@ -5,3 +5,23 @@ The next number is created by add these two 1+1 = 2 giving us 1,1,2
 and so on until we have 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, ...
 Write a recursive function that asks the user how many Fibonacci numbers to generate and then generates them."""
 
+def generate_fib():
+    count = abs(int(input("How many Fibonacci numbers do you want to generate? ")))
+    fib = [0, 1]
+
+    if type(count) != int:
+        return "You did not choose a number."
+
+    if count == 0:
+        return 0
+    elif count == 1:
+        return 1
+    else:
+        for i in range(2, count):
+            total = fib[i-2] + fib[i-1]
+            fib.append(total)
+
+        return fib
+
+if __name__ == '__main__':
+    print(generate_fib())
