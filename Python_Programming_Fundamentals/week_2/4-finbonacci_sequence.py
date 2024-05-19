@@ -13,9 +13,9 @@ def generate_fib():
         return "You did not choose a number."
 
     if count == 0:
-        return 0
+        return "Number has to be greater than zero."
     elif count == 1:
-        return 1
+        return 0
     else:
         for i in range(2, count):
             total = fib[i-2] + fib[i-1]
