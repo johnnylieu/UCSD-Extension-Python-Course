@@ -34,9 +34,9 @@ class Calc():
 
 class Cal_Inheritance_Division(Calc): # it's now inheriting everything from the class Calc
     def division(self, a, b):
-        return self.divide(a, b)
+        return self.divide(a, b) # using the divide method from the parent class
 
-if __name__ == "main":
+if __name__ == "__main__":
     my_obj = Cal_Inheritance_Division()
     print(my_obj.add(2, 3))
     print(my_obj.subtract(2, 3))
