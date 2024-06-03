@@ -63,18 +63,18 @@ def modulus(x, y):
 
 
 if __name__ == "__main__":
-    start = time.perf_counter()
-    
-    # # concurrently
-    # add(6, 2)
-    # subtract(6, 2)
-    # multiply(6, 2)
-    # divide(6, 2)
-    # modulus(6, 2)
-    # finish = time.perf_counter()
-    # print(f"Concurrent execution time: {finish - start} seconds.")
+    # concurrently
+    concurrent_start = time.perf_counter()
+    add(6, 2)
+    subtract(6, 2)
+    multiply(6, 2)
+    divide(6, 2)
+    modulus(6, 2)
+    concurrent_finish = time.perf_counter()
+    print(f"Concurrent execution time: {concurrent_finish - concurrent_start} seconds.")
 
     # syncrhonously
+    synch_start = time.perf_counter()
     process1 = multiprocessing.Process(target=add, args=(2, 6))
     process2 = multiprocessing.Process(target=subtract, args=(2, 6))
     process3 = multiprocessing.Process(target=multiply, args=(2, 6))
@@ -93,5 +93,5 @@ if __name__ == "__main__":
     process4.join()
     process5.join()
 
-    finish = time.perf_counter()
-    print(f"Sychronous execution time: {finish - start} seconds.")
+    synch_finish = time.perf_counter()
+    print(f"Sychronous execution time: {synch_finish - synch_start} seconds.")
