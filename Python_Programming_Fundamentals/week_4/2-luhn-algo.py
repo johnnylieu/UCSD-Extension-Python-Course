@@ -1,4 +1,6 @@
-"""The Luhn algorithm is used to verify whether a credit card number is valid or not. You will need to create a program that uses regular expressions to find the credit card information from a string and then runs the Luhn Algorithm to verify the credit card number. Use the test below.
+"""The Luhn algorithm is used to verify whether a credit card number is valid or not. 
+You will need to create a program that uses regular expressions to find the credit card information from a string and then runs the Luhn Algorithm to verify the credit card number. 
+Use the test below.
 
  
 
@@ -13,5 +15,13 @@ Now starting from the rightmost digit i.e. check digit, double every second digi
 If double of a digit is more then 9, then subtract 9 to that number. Then add the digits so the number will become: 3 - 5 - 5 - 3 - 2 - 2 - 9 - 7 - 6 - 5 - 3
 Sum all the numbers together and find the modulus (%10). If the modulus is equal to zero, the number is valid"""
 
+import re
+
+text = "Please use my credit card number. It is Visa # 37562198673 with an expiration date of 08/19/2030. The CVS number is 854."
+pattern = r"\bVisa #\s*(\d+)\b"
+match = re.search(pattern, text)
+
 if __name__ == "__main__":
-    pass
+    print(match.group(1))
+    # question why does printing match alone return Visa # in front of the cc number?
+    # print(match)
