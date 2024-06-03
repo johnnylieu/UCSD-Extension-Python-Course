@@ -61,10 +61,10 @@ def modulus(x, y):
     time.sleep(1)
     return x % y
 
-start = time.perf_counter()
-
 
 if __name__ == "__main__":
+    start = time.perf_counter()
+    
     # # concurrently
     # add(6, 2)
     # subtract(6, 2)
