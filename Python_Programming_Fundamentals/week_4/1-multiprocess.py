@@ -65,11 +65,13 @@ def modulus(x, y):
 if __name__ == "__main__":
     # concurrently
     concurrent_start = time.perf_counter()
+    
     add(6, 2)
     subtract(6, 2)
     multiply(6, 2)
     divide(6, 2)
     modulus(6, 2)
+
     concurrent_finish = time.perf_counter()
     print(f"Concurrent execution time: {concurrent_finish - concurrent_start} seconds.")
 
