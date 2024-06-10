@@ -63,8 +63,7 @@ import sounddevice as sd # i had to pip install sounddevice
 class MMedia_Processing:
 
     def ImgProc():
-        image = "BigDataImage-1.jpg"
-        read_image = mpimg.imread(image)
+        read_image = mpimg.imread("BigDataImage-1.jpg")
         lum_img = read_image[:, :, 1]
         plt.figure(1)
         plt.imshow(lum_img)
@@ -93,6 +92,8 @@ class MMedia_Processing:
         plt.show()
 
     def AudProcReversed():
+        sound_wav = "Alone-Sistar.wav"
+        fs, data = read(sound_wav)
         # reversing now
         reversed_data = data[::-1]
         # saving file
@@ -109,6 +110,6 @@ class MMedia_Processing:
 
 if __name__ == "__main__":
     obj1 = MMedia_Processing
-    obj1.ImgProc()
     obj1.AudProc()
     obj1.AudProcReversed()
+    obj1.ImgProc()
