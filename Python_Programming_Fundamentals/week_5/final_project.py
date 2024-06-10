@@ -95,7 +95,7 @@ class MMedia_Processing:
         # reversing now
         reversed_data = data[::-1]
         # saving file
-        write("Reversed-Alone-Sistar.wav", fs, reversed_data)
+        write("Alone-Sistar-reversed.wav", fs, reversed_data)
         # going to plot it too because I am curious how this will work
         fs, data = read("Alone-Sistar-Reversed.wav")
         time = np.arange(0, len(data)) / fs
