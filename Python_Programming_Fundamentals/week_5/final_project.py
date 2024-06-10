@@ -91,8 +91,21 @@ class MMedia_Processing:
         plt.title("Waveform of Test Audio")
         plt.show()
 
+        # reversing now
+        reversed_data = data[::-1]
+        # saving file
+        write("Reversed-Alone-Sistar.wav", fs, reversed_data)
+        # going to plot it too because I am curious how this will work
+        fs, data = read("Reversed-Alone-Sistar.wav")
+        time = np.arange(0, len(data)) / fs
+        plt.plot(time, data)
+        plt.xlabel("Reversed Sample Index")
+        plt.ylabel("Reversed Amplitude")
+        plt.title("Reversed Waveform of Test Audio")
+        plt.show()
+
 
 if __name__ == "__main__":
     obj1 = MMedia_Processing
-    obj1.ImgProc()
+    # obj1.ImgProc()
     obj1.AudProc()
