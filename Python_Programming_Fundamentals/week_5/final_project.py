@@ -63,7 +63,7 @@ class MMedia_Processing:
 
     def ImgProc():
         read_image = mpimg.imread("BigDataImage-1.jpg")
-        lum_img = read_image[:, :, 1]
+        lum_img = read_image[:, :, 0]
         plt.figure(1)
         plt.imshow(lum_img)
         plt.title("Red scale image")
