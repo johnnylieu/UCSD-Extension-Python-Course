@@ -63,9 +63,20 @@ class MMedia_Processing:
         image = "BigDataImage-1.jpg"
         read_image = mpimg.imread(image)
         lum_img = read_image[:, :, 1]
+        plt.figure(1)
         plt.imshow(lum_img)
-        # plt.imshow(read_image)
+        plt.title("Red scale image")
         plt.show()
+
+        plt.figure(2)
+        plt.imshow(read_image)
+        plt.title("Original image")
+        plt.xlabel("X Label")
+        plt.ylabel("Y Label")
+        plt.grid()
+        plt.show()
+
+        plt.hist(lum_img.ravel(), bins=256, range=(0.0, 255), fc='k', ec='k')
 
     def AudProc():
         pass
