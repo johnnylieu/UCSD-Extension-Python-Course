@@ -92,6 +92,7 @@ class MMedia_Processing:
         plt.title("Waveform of Test Audio")
         plt.show()
 
+    def AudProcReversed():
         # reversing now
         reversed_data = data[::-1]
         # saving file
@@ -110,3 +111,4 @@ if __name__ == "__main__":
     obj1 = MMedia_Processing
     obj1.ImgProc()
     obj1.AudProc()
+    obj1.AudProcReversed()
