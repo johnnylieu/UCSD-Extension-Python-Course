@@ -55,6 +55,9 @@ Submit your code, the plots, the image files and audio files for full credit. Ha
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+import numpy as np
+from scipy.io.wavfile import read, write
+import sounddevice as sd # i had to pip install sounddevice
 
 
 class MMedia_Processing:
@@ -79,9 +82,17 @@ class MMedia_Processing:
         plt.hist(lum_img.ravel(), bins=256, range=(0.0, 255), fc='k', ec='k')
 
     def AudProc():
-        pass
+        fs, data = read("Alone-Sistar.wav")
+        time = np.arange(0, len(data)) / fs # creates an array of equally spaced values
+        # print(time) # the above line works, we have an array to plot
+        plt.plot(time, data) # time is x, data is y. data is amplitutde of sound
+        plt.xlabel("Sample Index")
+        plt.ylabel("Amplitude")
+        plt.title("Waveform of Test Audio")
+        plt.show()
 
 
 if __name__ == "__main__":
     obj1 = MMedia_Processing
     obj1.ImgProc()
+    obj1.AudProc()
