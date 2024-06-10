@@ -107,5 +107,5 @@ class MMedia_Processing:
 
 if __name__ == "__main__":
     obj1 = MMedia_Processing
-    # obj1.ImgProc()
+    obj1.ImgProc()
     obj1.AudProc()
