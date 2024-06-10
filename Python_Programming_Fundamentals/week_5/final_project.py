@@ -82,7 +82,8 @@ class MMedia_Processing:
         plt.hist(lum_img.ravel(), bins=256, range=(0.0, 255), fc='k', ec='k')
 
     def AudProc():
-        fs, data = read("Alone-Sistar.wav")
+        sound_wav = "Alone-Sistar.wav"
+        fs, data = read(sound_wav)
         time = np.arange(0, len(data)) / fs # creates an array of equally spaced values
         # print(time) # the above line works, we have an array to plot
         plt.plot(time, data) # time is x, data is y. data is amplitutde of sound
@@ -96,7 +97,7 @@ class MMedia_Processing:
         # saving file
         write("Reversed-Alone-Sistar.wav", fs, reversed_data)
         # going to plot it too because I am curious how this will work
-        fs, data = read("Reversed-Alone-Sistar.wav")
+        fs, data = read("Alone-Sistar-Reversed.wav")
         time = np.arange(0, len(data)) / fs
         plt.plot(time, data)
         plt.xlabel("Reversed Sample Index")
