@@ -128,8 +128,6 @@ def compound_interest():
     print(f"{'Year':<{width//3}} {'Interest':^{width//3}} {'Balance':>{width//3}}\n")
     print("=" * width)
 
-    new_principal = 0
-
     for year in range(term):
         year += 1
         interest = apr * principal
