@@ -78,6 +78,68 @@ def password_scoring():
 
     print(f"Your password score is: {points}")
 
+
+# Part 3 - Johnny Lieu
+"""Part III
+Create a python script to calculate compounded interest for given principal amount using a given
+interest rate and duration. For this assignment you may assume only good data will be entered, so
+you do not need to worry about “ABC” being entered for a numeric value.
+Requirements:
+• You will prompt the user for three pieces of information: principal amount (beginning balance),
+interest rate and term (in years).
+• The principal amount will be parsed as a float and be between the values of 1 and 1,000,000.
+Two decimals may also be given. Suggested variable name: principal
+• The percentage rate will be parsed as a float and be between the values of 0 and 100. Two
+decimals may also be given. Suggested variable name: apr
+• The term will be parsed as an int and be between the values 1 and 30. Suggested variable
+name: term
+• The interest calculation will be compounded annual interest. In other words, after each year,
+the yearly interest earned is calculated by multiplying the interest rate by the balance. This
+interest amount is then added back to the balance before the next year’s interest is calculated.
+This is what causes the compounding effect.
+• Use a for loop to iterate from 0 to term length
+• Interest should be entered as 4.5 for 4.5%. Therefore, make sure to divide that number by
+100.0 before multiplying with the balance, otherwise the interest calculation will be HUGE.
+• The output must be in tabular form, with each year in the term clearly identified.
+o Hint: use “f” string formatting to get the tabular layout.
+o Example below is formatted in US units – you may use the appropriate formatting for
+your locale.
+o See the very end of the document for hints regarding the formatting of the number (try
+to get it on your own first!)
+o Do NOT use tabulate or any other libraries for this. Use format strings only.
+▪ However, I do recommend tabulate for real-world use…"""
+
+def compound_interest():
+    principal = input('Enter your princial amount (beginning balance): ')
+    principal = float(principal)
+    principal = round(principal, 2)
+    apr = input('Enter your interst rate: ')
+    apr = float(apr)
+    apr = round(apr, 2)
+    term = input('Enter the term (in years): ')
+    term = int(term)
+
+    apr = apr / 100.00
+    interest = 0
+    year = 0
+
+    width = 75
+
+    print(f"{'Year':<{width//3}} {'Interest':^{width//3}} {'Balance':>{width//3}}\n")
+    print("=" * width)
+
+    new_principal = 0
+
+    for year in range(term):
+        year += 1
+        interest = apr * principal
+        total = (apr * principal) + principal
+        principal = total
+
+        print(f"{year:<{width//3}} ${interest:^{width//3},.2f} ${principal:>{width//3},.2f}")
+
+
 if __name__ == "__main__":
-    # is_palindrome()
+    is_palindrome()
     password_scoring()
+    compound_interest()
