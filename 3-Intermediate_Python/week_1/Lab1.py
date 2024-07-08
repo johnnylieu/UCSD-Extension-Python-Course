@@ -23,10 +23,10 @@ def isPalindrome():
     #     print(f"'{word}' is not a word.")
     # the below would have bene an elif if the above was used
     # user_string would have been word and user_string_reversed would have been word_reversed
-    usedr_string_reversed = ''
+    user_string_reversed = ''
     for i in range(len(user_string)-1, -1, -1):
-        word_reversed += user_string[i]
-    print(f"Is '{user_string}' a palindrome? {user_string == usedr_string_reversed}")
+        user_string_reversed += user_string[i]
+    print(f"Is '{user_string}' a palindrome? {user_string == user_string_reversed}")
 
 if __name__ == "__main__":
     isPalindrome()
