@@ -26,7 +26,6 @@ def isPalindrome():
     for i in range(len(word)-1, -1, -1):
         word_reversed += word[i]
     print(f"Is '{word}' a palindrome? {word == word_reversed}")
-    run_program = False
 
 if __name__ == "__main__":
     isPalindrome()
