@@ -16,19 +16,17 @@ Enter a string: REDIVIDER
 Is 'REDIVIDER' a palindrome? True"""
 
 def isPalindrome():
-    run_program = True
-    while run_program:
-        word = input("Enter a string: ")
-        # the below will tell the user whether or not they entered a word
-        # but since you are asking for a string, i'm assuming that includes sentences as well so i removed it
-        # if word.isalpha() == False:
-        #     print(f"'{word}' is not a word.")
-        # the below would have bene an elif if the above was used
-        word_reversed = ''
-        for i in range(len(word)-1, -1, -1):
-            word_reversed += word[i]
-        print(f"Is '{word}' a palindrome? {word == word_reversed}")
-        run_program = False
+    word = input("Enter a string: ")
+    # the below will tell the user whether or not they entered a word
+    # but since you are asking for a string, i'm assuming that includes sentences as well so i removed it
+    # if word.isalpha() == False:
+    #     print(f"'{word}' is not a word.")
+    # the below would have bene an elif if the above was used
+    word_reversed = ''
+    for i in range(len(word)-1, -1, -1):
+        word_reversed += word[i]
+    print(f"Is '{word}' a palindrome? {word == word_reversed}")
+    run_program = False
 
 if __name__ == "__main__":
     isPalindrome()
