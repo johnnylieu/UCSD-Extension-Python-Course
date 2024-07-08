@@ -21,7 +21,7 @@ def isPalindrome():
     # but since you are asking for a string, i'm assuming that includes sentences as well so i removed it
     # if word.isalpha() == False:
     #     print(f"'{word}' is not a word.")
-    # the below would have bene an elif if the above was used
+    # the below would have been an elif if the above was used
     # user_string would have been word and user_string_reversed would have been word_reversed
     user_string_reversed = ''
     for i in range(len(user_string)-1, -1, -1):
