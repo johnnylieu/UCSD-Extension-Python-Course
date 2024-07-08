@@ -17,12 +17,12 @@ Is 'REDIVIDER' a palindrome? True"""
 
 def isPalindrome():
     run_program = True
-    word_reversed = ''
     while run_program:
         word = input("Please enter a word: ")
         if word.isalpha() == False:
             print(f"'{word}' is not a word.")
         else:
+            word_reversed = ''
             for i in range(len(word)-1, -1, -1):
                 word_reversed += word[i]
             if word == word_reversed:
