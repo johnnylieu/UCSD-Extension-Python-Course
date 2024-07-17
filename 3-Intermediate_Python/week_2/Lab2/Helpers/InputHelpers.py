@@ -3,16 +3,10 @@ __all__ = ['inputInt', 'inputFloat', 'inputString', 'inputDate']
 from DataTypeHelpers import *
 from datetime import datetime
 
-min_value = 0
-max_value = 100
-
-min_length = 0
-max_length = 100
-
-def inputInt():
+def inputInt(prompt="Enter an integer: ", min_value=0, max_value=100):
     
     while True:
-        prompt = input("Enter an integer: ")
+        prompt = input(prompt)
 
         if isInt(prompt):
             value = int(prompt)
@@ -24,9 +18,9 @@ def inputInt():
         else:
             print("The entered text needs to be in the int format.")
 
-def inputFloat():
+def inputFloat(prompt="Enter a float: ", min_value=0, max_value=100):
     while True:
-        prompt = input("Enter a float: ")
+        prompt = input(prompt)
 
         if isFloat(prompt):
             value = float(prompt)
@@ -38,9 +32,9 @@ def inputFloat():
         else:
             print("Entered text needs to be in the float format.")
 
-def inputString():
+def inputString(prompt="Enter a string: ", min_length=0, max_length=100):
     while True:
-        prompt = input("Enter a string: ")
+        prompt = input(prompt)
         prompt_length = len(prompt)
 
         if min_length <= prompt_length <= max_length:
@@ -48,9 +42,9 @@ def inputString():
         else:
             print("The string is out of range.")
 
-def inputDate():
+def inputDate(prompt="Enter a date in ISO format (yyyy-mm-dd): "):
     while True:
-        prompt = input("Enter a date in this format (yyyy-mm-dd): ")
+        prompt = input(prompt)
 
         if isDate(prompt):
             return datetime.fromisoformat(prompt)
