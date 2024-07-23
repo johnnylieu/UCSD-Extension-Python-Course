@@ -23,12 +23,12 @@ class Student(object):
     def addCourse(self, course, score):
         assert isinstance(course, str), "Course must be a word or series of words."
         assert isinstance(score, float), "Score must be a number."
-        assert 0<score<4, "Score must be between 0 and 4."
+        assert 0<=score<=4, "Score must be between 0 and 4."
 
-        new_course = {course, score}
+        new_course = {course: score}
         self.courses.update(new_course)
     
-    def addCourse(self, courses):
+    def addCourses(self, courses):
         assert isinstance(courses, dict), "Courses must be in 'key':\"value\" pairs."
 
         self.courses.update(courses)
@@ -59,9 +59,47 @@ if __name__ == "__main__":
     students.append(Student(456789, "Susie", "Marks", {'CSE-101': 4.00, 'CSE-103': 2.50, 'CSE-301': 3.50, 'CSE-302': 3.00, 'CSE-310': 4.00}))
     students.append(Student(567890, "Frank", "Marks", {'CSE-102': 4.00, 'CSE-104': 3.50, 'CSE-201': 2.50, 'CSE-202': 3.50, 'CSE-203': 3.00}))
     students.append(Student(654321, "Annie", "Marks", {'CSE-101': 4.00, 'CSE-102': 4.00, 'CSE-103': 3.50, 'CSE-201': 4.00, 'CSE-203': 4.00}))
-    students.append(Student(987456, "Judy", "Smith", {'CSE-101': 2.50, 'CSE-103': 3.00, 'CSE-210': 3.50, 'CSE-260': 4.00}))
-    students.append(Student(456987, "John", "Smith", {'CSE-102': 4.00, 'CSE-103': 4.00, 'CSE-201': 3.00, 'CSE-210': 3.50, 'CSE-310': 4.00}))
-    students.append(Student(111354, "Kelly", "Williams", {'CSE-101': 3.50, 'CSE-102': 3.50, 'CSE-201': 3.00, 'CSE-202': 3.50, 'CSE-203': 3.50}))
-    students.append(Student(995511, "Brad", "Williams", {'CSE-102': 3.00, 'CSE-110': 3.50, 'CSE-125': 3.50, 'CSE-201': 4.00, 'CSE-203': 3.00}))
+    students.append(Student(987456, "Judy", "Smith", {'CSE-102': 4.00, 'CSE-103': 4.00, 'CSE-201': 3.00, 'CSE-210': 3.50, 'CSE-310': 4.00}))
+    students.append(Student(456987, "John", "Smith"))
+    students[-1].addCourse('CSE-102', 4.00)
+    students[-1].addCourse('CSE-103', 4.00)
+    students[-1].addCourse('CSE-201', 3.00)
+    students[-1].addCourse('CSE-210', 3.50)
+    students[-1].addCourse('CSE-310', 4.00)
+    students.append(Student(111354, "Kelly", "Williams"))
+    students[-1].addCourse('CSE-101', 3.50)
+    students[-1].addCourse('CSE-102', 3.50)
+    students[-1].addCourse('CSE-201', 3.00)
+    students[-1].addCourse('CSE-202', 3.50)
+    students[-1].addCourse('CSE-203', 3.50)
+    students.append(Student(995511, "Brad", "Williams"))
+    students[-1].addCourse('CSE-102', 3.00)
+    students[-1].addCourse('CSE-110', 3.50)
+    students[-1].addCourse('CSE-125', 3.50)
+    students[-1].addCourse('CSE-201', 4.00)
+    students[-1].addCourse('CSE-203', 3.00)
 
-    Student.printStudents(students)
+    print("\nQuery 1 - Sorted by last then first name:\n")
+    sorted_students = sorted(students, key=lambda student: (student.lastName, student.firstName))
+    Student.printStudents(sorted_students)
+
+    print("\nQuery 2 - Sorted by last then GPA:\n")
+    sorted_gpa = sorted(students, key=lambda student: student.gpa())
+    Student.printStudents(sorted_gpa)
+
+    print("\nQuery 3 - Unique Courses:\n")
+    # this also look a while to figure out
+    # for course in student.courses iterates over each key in the courses dictionary of the student objects
+    # student.course is referring to the Student class with parameter courses
+    # for student in students iterates over each student object in teh students list
+    unique_courses = {course for student in students for course in student.courses}
+    print(unique_courses)
+
+    print("\nQuery 4 - Get a list of students who have taken 'CSE-201:\n")
+    unique_student = {student for student in students if 'CSE-201' in student.courses}
+    for student in unique_student:
+        print(student)
+
+    print("\nQuery 5 - Get a list of students who have taken 'CSE-201:\n")
+    honor_roll = [student for student in students if student.gpa()>=3.5]
+    Student.printStudents(honor_roll)
