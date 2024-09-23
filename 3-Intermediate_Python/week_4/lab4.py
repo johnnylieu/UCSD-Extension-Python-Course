@@ -34,7 +34,9 @@ class LeibnizPiIterator:
         return self.fraction.value
     
     def __str__(self):
-        return f"pi after {self.iterated} iterations: {self.fraction}"
+        self.decimal_format = Decimal(self.fraction.numerator) / Decimal(self.fraction.denominator)
+        self.difference = abs(self.decimal_format - pi50)
+        return f"pi after {self.iterated} iterations: {self.fraction.value} \nDifference: {self.difference}"
     
 if __name__ == "__main__":
     obj = LeibnizPiIterator()
