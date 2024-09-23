@@ -1,5 +1,6 @@
 from fractions import Fraction
 from decimal import *
+from functools import reduce
 
 getcontext().prec = 70
 
@@ -39,7 +40,6 @@ class LeibnizPiIterator:
         self.decimal_format = Decimal(self.fraction.numerator) / Decimal(self.fraction.denominator)
         self.difference = abs(self.decimal_format - pi50)
         return f"pi after {self.iterated} iterations: {self.decimal_format:.50f} \nDifference: {self.difference:.50f}"
-    
 
 def NilakanthaPiGenerator():
     fraction = Fraction(3, 1)
@@ -59,17 +59,63 @@ def NilakanthaPiGenerator():
         iterated += 1
 
         yield fraction
+
+
+def compose(*functions):
+    return reduce(lambda f, g: lambda x: g(f(x)), functions)
+
+def miles_to_yards(miles):
+    return miles * 1760
+
+def yards_to_miles(yards):
+    return yards * 0.0005681818181818
+
+def yards_to_feet(yards):
+    return yards * 3
+
+def feet_to_yards(feet):
+    return feet * 0.3333333333333333
+
+def feet_to_inches(feet):
+    return feet * 12
+
+def inches_to_feet(inches):
+    return inches * 0.0833333333333333
+
+def inches_to_cm(inches):
+    return inches * 2.54
+
+def cm_to_inches(cm):
+    return cm * 0.3937007874015748
+
+def cm_to_meters(cm):
+    return cm * 0.01
+
+def meters_to_cm(meters):
+    return meters * 100
+
+def meters_to_km(meters):
+    return meters * 0.001
+
+def km_to_meters(km):
+    return km * 1000
     
 if __name__ == "__main__":
-    ## Leibniz method
-    obj = LeibnizPiIterator()
-    obj = iter(obj)
-    for i in range(iterations):
-        next(obj)
-    print(obj)
+    # ## Leibniz method
+    # obj = LeibnizPiIterator()
+    # obj = iter(obj)
+    # for i in range(iterations):
+    #     next(obj)
+    # print(obj)
 
-    ## Nilakantha's method
-    obj2 = NilakanthaPiGenerator()
-    for i in range(iterations):
-        approx_pi = next(obj2)
-    print(f"After {iterations} iterations, pi ≈ {approx_pi:.50F}")
+    # ## Nilakantha's method
+    # obj2 = NilakanthaPiGenerator()
+    # for i in range(iterations):
+    #     approx_pi = next(obj2)
+    # print(f"After {iterations} iterations, pi ≈ {approx_pi:.50F}")
+    
+
+    ## Part 3
+    miles_to_feet = compose(miles_to_yards, yards_to_feet)
+    result = miles_to_feet(2)
+    print(result)
